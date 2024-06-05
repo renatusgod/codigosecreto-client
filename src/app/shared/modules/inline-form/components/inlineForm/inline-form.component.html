@@ -1,0 +1,44 @@
+<div 
+  class=""
+  [ngClass]="{ '': isEditing }"
+  (click)="activeEditing()"
+>
+  <div class="btn btn-primary w-100 py-2 mb-3" *ngIf="!isEditing">{{ defaultText }}</div>
+
+  <form 
+    [formGroup]="form" 
+    (ngSubmit)="onSubmit()" 
+    *ngIf="isEditing" 
+    class=""
+  >
+    <div class="form-floating mb-3" *ngIf="inputType === 'input'" >
+      <input
+        autofocus
+        formControlName="title"
+        type="text" 
+        class="form-control"
+        id="floatingTitle"
+        [placeholder]="inputPlaceholder"
+      >
+      <label for="floatingTitle">{{ inputPlaceholder }}</label>
+    </div>
+
+    <button
+      *ngIf="hasButton" 
+      type="submit"
+      [disabled]="form.invalid" 
+      class="btn btn-primary w-100 py-2 mb-3"
+    >
+      {{ buttonText }}
+    </button>
+
+  </form>
+
+</div>
+<button
+  *ngIf="hasButton && isEditing" 
+  (click)="cancel()"
+  class="btn btn-outline-secondary w-100 py-2 mb-3"
+>
+  Cancelar
+</button>

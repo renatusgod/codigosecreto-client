@@ -1,0 +1,24 @@
+<div class="px-4 py-4">
+  <h1 class="pb-4 display-5 fw-bold text-body-emphasis text-center border-bottom">
+    <i class="bi bi-calendar2-check-fill"></i>
+    Expectativas
+  </h1>
+
+  <div class="list-group list-group-checkable d-grid gap-2 border-0 mt-4">
+    <div *ngFor="let share of shares" class="list-group-item rounded-3 py-3 mb-3 border-top">
+      
+      <div class="text-center">
+        {{ share.title }}
+      </div>
+
+      <div class="list-group list-group-checkable d-grid gap-2 border-0">
+        <div *ngFor="let expectation of getExpectationsByShareId(share.id)" class="py-3 ">
+          <span class="d-block small opacity-50">{{ expectation.description }}</span>
+          <input type="range" class="form-range" min="-1" max="1" value="0" id="customRange1">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

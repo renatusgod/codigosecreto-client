@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles/reset.css';
+@import './styles/global.css';
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+// Variable overrides first
+$primary: #5e6c84;
+$enable-shadows: true;
+$prefix: "mo-";
+
+// Then import Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
