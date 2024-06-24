@@ -5,28 +5,28 @@
   </h1>
 
   <div class="list-group list-group-checkable d-grid gap-2 border-0 mt-4">
-    <div *ngFor="let share of shares" class="list-group-item rounded-3 py-3 mb-3 border-top">
-      
-      <div class="text-center">
-        {{ share.title }}
-      </div>
-      
-      <div class="list-group list-group-checkable d-grid gap-2 border-0">
-        <div *ngFor="let expectation of getExpectationsByShareId(share.id)" class="py-3 border-bottom">
-          <span class="d-block small opacity-50">{{ expectation.description }}</span>
+    @for (share of shares; track share) {
+      <div class="list-group-item rounded-3 py-3 mb-3 border-top">
+        <div class="text-center">
+          {{ share.title }}
         </div>
-
-        <inline-form
-          class=""
-          defaultText="Nova descrição"
-          [hasButton]="true"
-          inputPlaceholder="Descrição"
-          buttonText="Adicionar"
-          (handleSubmit)="createExpectation($event, share.id)">
-        </inline-form>
-
+        <div class="list-group list-group-checkable d-grid gap-2 border-0">
+          @for (expectation of getExpectationsByShareId(share.id); track expectation) {
+            <div class="py-3 border-bottom">
+              <span class="d-block small opacity-50">{{ expectation.description }}</span>
+            </div>
+          }
+          <inline-form
+            class=""
+            defaultText="Nova descrição"
+            [hasButton]="true"
+            inputPlaceholder="Descrição"
+            buttonText="Adicionar"
+            (handleSubmit)="createExpectation($event, share.id)">
+          </inline-form>
+        </div>
       </div>
-    </div>
+    }
   </div>
 
   <inline-form

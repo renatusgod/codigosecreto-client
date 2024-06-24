@@ -10,18 +10,19 @@
   >
     <h5 class="text-center mt-2 mb-4 fw-normal">Nova conta</h5>
     <div class="mb-3 text-danger">
-      <span 
-        *ngFor="let error of errorMessages"
-        class="d-block"
-      >
-        {{ error }}
-      </span>
+      @for (error of errorMessages; track error) {
+        <span
+          class="d-block"
+          >
+          {{ error }}
+        </span>
+      }
     </div>
 
     <div class="form-floating mb-3">
       <input
         formControlName="email"
-        type="email" 
+        type="email"
         class="form-control"
         id="floatingEmail"
         placeholder="name@example.com"

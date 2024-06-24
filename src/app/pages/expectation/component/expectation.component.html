@@ -5,35 +5,40 @@
   </h1>
 
   <div class="list-group list-group-checkable d-grid gap-2 border-0 mt-4">
-    <form 
+    <form
       [formGroup]="form"
       (ngSubmit)="onSubmit()"
     >
-      <div *ngFor="let share of shares" class="list-group-item rounded-3 py-3 mb-3 border-top">
-        <div class="text-center">
-          {{ share.title }}
-        </div>
-
-        <div class="list-group list-group-checkable d-grid gap-2 border-0">
-          <div *ngFor="let expectation of getExpectationsByShareId(share.id)" class="py-3 ">
-            <span class="d-block small opacity-50">{{ expectation.description }}</span>
-            <input
-              [formControlName]="expectation.id"
-              type="range"
-              class="form-range"
-              min="-1"
-              max="1"
-              value="0"
-            />
+      @for (share of shares; track share) {
+        <div class="list-group-item rounded-3 py-3 mb-3 border-top">
+          <div class="text-center">
+            {{ share.title }}
+          </div>
+          <div class="list-group list-group-checkable d-grid gap-2 border-0">
+            @for (expectation of getExpectationsByShareId(share.id); track expectation) {
+              <div class="py-3 ">
+                <span class="d-block small opacity-50">{{ expectation.description }}</span>
+                <input
+                  [formControlName]="expectation.id"
+                  type="range"
+                  class="form-range"
+                  min="-1"
+                  max="1"
+                  value="0"
+                  />
+              </div>
+            }
           </div>
         </div>
-      </div>
+      }
 
-      <div class="mb-3 text-danger" *ngIf="errorMessage">
-        <span class="d-block">
-          {{ errorMessage }}
-        </span>
-      </div>
+      @if (errorMessage) {
+        <div class="mb-3 text-danger">
+          <span class="d-block">
+            {{ errorMessage }}
+          </span>
+        </div>
+      }
       <button class="btn btn-primary w-100 py-2 mb-3" type="submit">Completar</button>
     </form>
   </div>
