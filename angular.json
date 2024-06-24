@@ -75,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "codigosecreto:build:production"
+              "buildTarget": "codigosecreto:build:production"
             },
             "development": {
-              "browserTarget": "codigosecreto:build:development"
+              "buildTarget": "codigosecreto:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "codigosecreto:build"
+            "buildTarget": "codigosecreto:build"
           }
         },
         "test": {
