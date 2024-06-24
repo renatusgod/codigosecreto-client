@@ -9,12 +9,20 @@ const routes: Routes = [
     component: CodigoSecretoComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'market'
+      },
+      {
         path: 'shares',
         loadChildren: () => import('../share/share.module').then(m => m.ShareModule)
       },
       {
         path: 'expectations',
         loadChildren: () => import('../expectation/expectation.module').then(m => m.ExpectationModule)
+      },
+      {
+        path: 'market',
+        loadChildren: () => import('../market/market.module').then(m => m.MarketModule)
       },
     ]
   }
