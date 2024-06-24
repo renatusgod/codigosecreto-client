@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UntypedFormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ExpectationsDoneRequest } from "src/app/auth/types/expectations-done-request.interface";
 import { ExpectationInterface } from "src/app/shared/models/expectation.interface";
 import { ShareInterface } from "src/app/shared/models/share.interface";
@@ -20,7 +20,7 @@ export class ExpectationComponent {
   constructor(
     private shareService: ShareService,
     private expectationService: ExpectationService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
   ) {}
 
   ngOnInit(): void {
